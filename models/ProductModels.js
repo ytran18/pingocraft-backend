@@ -20,13 +20,18 @@ const productsSchma = mongoose.Schema(
         },
         price:
         {
-            type: String,
+            type: Array,
             require:true
         },
         minOrder: 
         {
             type: String,
             require:true,
+        },
+        imageList:
+        {
+            type: Array,
+            require: true
         }
     },
     {

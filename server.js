@@ -2,28 +2,21 @@ const express = require('express');
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 
-
-const products = require('./data/Products');
 const mongoConnection = require('./config/MongoDB');
+const ImportData = require('./DataImport');
+const productRoute = require('./routes/ProductsRoutes');
 
 dotenv.config();
 
 mongoConnection();
 const app = express();
 
-// load product from server
+// api
 
-app.get("/api/products", (req,res) => 
-{
-    res.json(products)
-})
+app.use("/api/import", ImportData)
 
-// single product from server
+app.use("/api/products", productRoute)
 
-app.get("/api/products/:id", (req, res) =>
-{
-    const product = products.find((p) => p._id === req.params.id);
-    res.json(product)
-})
+
 
 app.listen(process.env.PORT || 1100 , console.log("server running ..."))
