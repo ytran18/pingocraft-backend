@@ -16,7 +16,7 @@ productRoute.get("/",
     )
 )
 
-// GET SINGLE PRODUCTS
+// GET SINGLE PRODUCT
 
 productRoute.get("/:id",
     asyncHandler(
