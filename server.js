@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+const cors = require("cors")
 
 const mongoConnection = require('./config/MongoDB');
 const ImportData = require('./DataImport');
@@ -13,6 +14,8 @@ mongoConnection();
 const app = express();
 
 // 
+
+app.use(cors())
 
 app.use("/api/import", ImportData)
 
